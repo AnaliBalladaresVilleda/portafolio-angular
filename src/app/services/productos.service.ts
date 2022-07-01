@@ -58,13 +58,13 @@ export class ProductosService {
   }
 
    private filtrarProductos(termino : string){
-        console.log(this.productos);
+        
         this.productosFiltrado = [];
         termino =  termino.toLocaleLowerCase();
 
         this.productos.forEach(prod => {
 
-          const tituloLower =  prod.titulo.toLocaleLowerCase();
+        const tituloLower =  prod.titulo.toLocaleLowerCase();
 
           if(prod.categoria.indexOf(termino) >= 0 || tituloLower.indexOf(termino) >= 0){
             this.productosFiltrado.push(prod);
