@@ -1356,7 +1356,7 @@ body {
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
   .item-inside-1 {
-    background-image: url("../img/project-1h.jpg");
+    /* background-image: url("../img/project-1h.jpg"); */
   }
 }
 @media (min-width: 40em) {
