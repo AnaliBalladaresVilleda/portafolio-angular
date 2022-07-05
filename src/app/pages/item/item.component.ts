@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductosService } from '../../services/productos.service';
 import { ProductoDescripcion } from '../../interfaces/producto-descripcion.interface';
-import { Producto } from '../../interfaces/producto.interface';
 
 @Component({
   selector: 'app-item',
@@ -10,33 +9,26 @@ import { Producto } from '../../interfaces/producto.interface';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  producto: ProductoDescripcion = {
-    categoria : '',
-    desc1 : '',
-    desc2 : '',
-    producto : '',
-    resumen : '',
-    subtitulo1 : '',
-    subtitulo2 : ''
 
-  };
-  id: any;
+  producto!: ProductoDescripcion;
+  id!: string;
 
-  constructor(private route : ActivatedRoute,
-                    public productoService: ProductosService   ) { }
 
-  ngOnInit(): void {
+  constructor( private route: ActivatedRoute,
+               public productoService: ProductosService ) { }
 
-      this.route.params.subscribe(parametros => {
-       
-        
-        this.productoService.getProducto (parametros['id'])
-                .subscribe((producto  )=>{
-                  this.id =  parametros['id'];
+  ngOnInit() {
+
+    this.route.params
+        .subscribe( parametros => {
+          // console.log(parametros['id']);
+          this.productoService.getProducto(parametros['id'])
+                .subscribe( (producto: ProductoDescripcion) => {
+                  this.id = parametros['id'];
                   this.producto = producto;
-                 
+                });
         });
-      });
+
 
   }
 
